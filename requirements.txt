@@ -1,0 +1,5 @@
+python>=3.6
+torch==1.9.0
+torchaudio==0.0
+numpy
+tensorbroad 
