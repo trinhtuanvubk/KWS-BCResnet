@@ -4,6 +4,8 @@
 
 ### Python ###
 
+*.sh
+
 #data
 data/
 ckpt/
