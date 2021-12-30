@@ -5,7 +5,7 @@
 ### Python ###
 
 *.sh
-
+*-log
 #data
 data/
 ckpt/
