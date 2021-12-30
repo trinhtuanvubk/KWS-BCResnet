@@ -11,6 +11,8 @@ python3 -m prepare_data.GSC
 ```bash
 CUDA_VISIBLE_DEVICES=0 python3 -m train.train --metric=arcface 
 ```
+## Config
+- To change some parameters, go config/config.py 
 
 
 
@@ -23,10 +25,3 @@ CUDA_VISIBLE_DEVICES=0 python3 -m train.train --metric=arcface
 
 
 
-
-
-
-<!-- # Download data 
-python3 -m prepare_data.download_data
-# Build json 
-python3 -m main.py -scenario   -->
