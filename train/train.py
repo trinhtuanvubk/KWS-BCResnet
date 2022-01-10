@@ -20,6 +20,7 @@ class Trainer:
     def __init__(self, args,config):
         # save args
         self.args = args
+        self.config = config
         self.log_folder = utils.get_log_folder(args,config)
         self.checkpoint_path = utils.get_checkpoint_path(args,config)
         # clear cache
@@ -27,7 +28,7 @@ class Trainer:
         # get loader
         self.train_loader, self.dev_loader, self.test_loader = data_loaders.GSC_loader(config)
         # get model
-        self.model = utils.get_model(args,config)
+        self.model = utils.get_model(args)
         # get criterion
         self.criterion = utils.get_criterion(args)
         # get optimizer
@@ -48,7 +49,7 @@ class Trainer:
         # reset grad
         self.optimizer.zero_grad()
         # compute forward
-        feats = MelSpectrogram(self.args).transform(x, lens)
+        feats = MelSpectrogram(self.config).transform(x, lens)
         output = self.model(feats, y)
         # compute loss
         loss = self.criterion(output, y)
@@ -63,7 +64,7 @@ class Trainer:
             lens = lens.to(self.args.device)
             y = y.to(self.args.device)
             # inference
-            feats = MelSpectrogram(self.args).transform(x, lens)
+            feats = MelSpectrogram(self.config).transform(x, lens)
             output = self.model(feats, y)
             accuracy = torch.mean((torch.argmax(output, dim=1) == y).float())
         return accuracy
@@ -98,14 +99,14 @@ class Trainer:
         self.writer.add_scalars('loss', metrics, self.iteration)
 
     def limit_train_batch_hook(self, batch_idx):
-        if self.args.limit_train_batch > 0:
-            if batch_idx > self.args.limit_train_batch:
+        if self.config.limit_train_batch > 0:
+            if batch_idx > self.config.limit_train_batch:
                 return True
         return False
 
     def limit_val_batch_hook(self, batch_idx):
-        if self.args.limit_val_batch > 0:
-            if batch_idx > self.args.limit_val_batch:
+        if self.config.limit_val_batch > 0:
+            if batch_idx > self.config.limit_val_batch:
                 return True
         return False
 
@@ -206,7 +207,7 @@ class Trainer:
                 self.scheduler.step(self.accuracy)
 
     def fit(self):
-        models.print_summary(self.model)
+        utils.print_summary(self.model)
         try:
             self._fit()
         except KeyboardInterrupt: 

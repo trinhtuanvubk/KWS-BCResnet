@@ -15,10 +15,10 @@ class Config(object):
     m = 0.5 
     s = 64
  
-    batch_zise = 32
+    batch_size = 32
     shuffle = True
     pin_memory = True
-    num_epoch = 50 
+    num_epoch = 2
     log_iter = 10 
     num_worker = 1
     clip_grag_norm = 0.5

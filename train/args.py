@@ -28,15 +28,14 @@ def get_args():
     parser.add_argument('--m', type=float, default=0.5)
     parser.add_argument('--s', type=float, default=64)
 
-    # # parameter for scenario
-    # parser.add_argument('-scenario', type=str, default='train')
 
     # # parameter for training
-    # parser.add_argument('--no_shuffle', action='store_false')
-    # parser.add_argument('--no_evaluate', action='store_false')
+    parser.add_argument('--no_shuffle', action='store_false')
+    parser.add_argument('--no_evaluate', action='store_false')
     parser.add_argument('--clear_cache', action='store_true')
-    # parser.add_argument('--num_epoch', type=int, default=100)
-    # parser.add_argument('--log_iter', type=int, default=10)
+    parser.add_argument('--num_epoch', type=int, default=100)
+    parser.add_argument('--batch_size',type=int, default=32)
+    parser.add_argument('--log_iter', type=int, default=10)
     # parser.add_argument('--num_worker', type=int, default=2)
     # parser.add_argument('--no_pin_memory', action='store_false')
     # parser.add_argument('--clip_grad_norm', type=float, default=5.0)
