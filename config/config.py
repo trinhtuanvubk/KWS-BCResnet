@@ -9,12 +9,6 @@ class Config(object):
     n_mels = 40
     n_fft = 400
 
-    n_embed = 512
-    n_keyword = 12 
-
-    m = 0.5 
-    s = 64
- 
     batch_size = 32
     shuffle = True
     pin_memory = True
