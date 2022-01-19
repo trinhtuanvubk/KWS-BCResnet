@@ -15,8 +15,8 @@ def get_log_folder(args,config):
     folder = folder.replace('checkpoints', 'logs')
     return folder
 
-def get_visualize_folder(args,config):
-    root_path = f'visualize/{args.model}_{args.metric}_{args.loss}_{config.n_keyword}/'
+def get_visualize_folder(args):
+    root_path = f'visualize/{args.model}_{args.metric}_{args.loss}_{args.n_keyword}/'
     sub_folder = ['train', 'test']
     for folder in sub_folder:
         path = os.path.join(root_path, folder)
