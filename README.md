@@ -9,7 +9,7 @@ python3 -m prepare_data.GSC
 ```
 ## Training 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python3 -m train.train --metric=arcface --num_epoch=2 --no_evaluate
+CUDA_VISIBLE_DEVICES=0 python3 -m train.train --metric=arcface --num_epoch=200 --no_evaluate
 ```
 ## Config
 - To change some parameters, go config/config.py 
